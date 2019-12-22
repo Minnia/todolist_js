@@ -5,6 +5,22 @@
   box-shadow: 0 0 3px (rgba(0, 0, 0, 0.1));
 }
 
+#navbarList {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #444;
+}
+
+#navbarItems {
+  color: white;
+  background: #444;
+  padding-right: 8px;
+}
+
 .todos {
   color: grey;
   text-decoration: grey line-through;
@@ -49,4 +65,8 @@ input {
 input:focus {
   background: #fff;
   border: 3px solid #2980b9;
+}
+
+body {
+  margin: 0 auto;
 }
