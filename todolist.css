@@ -1,0 +1,10 @@
+#container {
+  width: 360px;
+  margin: auto;
+  border: 2px solid grey;
+}
+
+.todos {
+  color: grey;
+  text-decoration: grey line-through;
+}
