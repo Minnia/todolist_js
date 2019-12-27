@@ -1,3 +1,6 @@
+const todoList = document.querySelector("#todolist");
+const todosForm = document.querySelector("#add-todo-list");
+
 const li = document.getElementsByClassName("listElement");
 const liArray = [...li];
 
@@ -22,20 +25,42 @@ const deleteTodo = element => {
 };
 deleteSpans.forEach(deleteTodo);
 
-input.forEach(input => {
-  input.addEventListener("keypress", function(event) {
-    if (event.which === 13) {
-      const newTodo = this.value;
-      this.value = "";
-      const ul = document.getElementById("todolist");
-      const li = document.createElement("li");
-      const span = document.createElement("span");
-      span.innerHTML = "X ";
-      li.appendChild(span);
-      li.appendChild(document.createTextNode(newTodo));
-      toggleTodo(li);
-      deleteTodo(span);
-      ul.appendChild(li);
-    }
-  });
+const createTodoElement = (id, value) => {
+  const li = document.createElement("li");
+  const deleteButton = document.createElement("span");
+  li.setAttribute("data-id", id);
+  const newTodo = value;
+  deleteButton.innerHTML = "X ";
+  li.appendChild(deleteButton);
+  li.appendChild(document.createTextNode(newTodo));
+  toggleTodo(li);
+  deleteTodo(deleteButton);
+  todoList.appendChild(li);
+};
+
+todosForm.addEventListener("keypress", e => {
+  if (e.which === 13) {
+    e.preventDefault();
+    db.collection("todos")
+      .add({
+        newTodo: todosForm.todo.value
+      })
+      .then(document => {
+        createTodoElement(document.id, todosForm.todo.value);
+        todosForm.todo.value = "";
+      });
+  }
 });
+
+//Firebase
+const getTodos = () => {
+  return db
+    .collection("todos")
+    .get()
+    .then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        createTodoElement(doc.id, doc.data().newTodo);
+      });
+    });
+};
+getTodos();

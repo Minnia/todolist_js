@@ -20,13 +20,39 @@
     </div>
     <div id="container">
       <h1>Todo List</h1>
-      <input type="text" placeholder="Add new todo" />
-      <ul id="todolist">
-        <li class="listElement"><span>X</span> 1</li>
-        <li class="listElement"><span>X</span> 2</li>
-        <li class="listElement"><span>X</span> 3</li>
-      </ul>
+      <form id="add-todo-list">
+        <input type="text" name="todo" placeholder="Add new todo" />
+      </form>
+      <ul id="todolist"></ul>
     </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBJTfAfgmp9yCDvAO-NQ5krz4rL8caqaEI",
+        authDomain: "todolist-js-6c1cc.firebaseapp.com",
+        databaseURL: "https://todolist-js-6c1cc.firebaseio.com",
+        projectId: "todolist-js-6c1cc",
+        storageBucket: "todolist-js-6c1cc.appspot.com",
+        messagingSenderId: "555019344138",
+        appId: "1:555019344138:web:1aa75e29ed90f6b3cc82f3",
+        measurementId: "G-VFSJLS6J3J"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+      db.settings({
+        timestampsInSnapshots: true
+      });
+      firebase.analytics();
+    </script>
     <script type="text/javascript" src="todolist.js"></script>
   </body>
 </html>
