@@ -17,14 +17,6 @@ const toggleTodo = element => {
 };
 liArray.forEach(toggleTodo);
 
-const deleteTodo = element => {
-  element.addEventListener("click", event => {
-    event.stopPropagation();
-    element.parentNode.remove();
-  });
-};
-deleteSpans.forEach(deleteTodo);
-
 const createTodoElement = (id, value) => {
   const li = document.createElement("li");
   const deleteButton = document.createElement("span");
@@ -37,6 +29,18 @@ const createTodoElement = (id, value) => {
   deleteTodo(deleteButton);
   todoList.appendChild(li);
 };
+
+const deleteTodo = element => {
+  element.addEventListener("click", event => {
+    event.stopPropagation();
+    let id = event.target.parentElement.getAttribute("data-id");
+    db.collection("todos")
+      .doc(id)
+      .delete();
+    element.parentNode.remove();
+  });
+};
+deleteSpans.forEach(deleteTodo);
 
 todosForm.addEventListener("keypress", e => {
   if (e.which === 13) {
