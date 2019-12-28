@@ -20,9 +20,9 @@ liArray.forEach(toggleTodo);
 const createTodoElement = (id, value) => {
   const li = document.createElement("li");
   const deleteButton = document.createElement("span");
-  li.setAttribute("data-id", id);
   const newTodo = value;
-  deleteButton.innerHTML = "X ";
+  li.setAttribute("data-id", id);
+  deleteButton.innerText = "X ";
   li.appendChild(deleteButton);
   li.appendChild(document.createTextNode(newTodo));
   toggleTodo(li);
