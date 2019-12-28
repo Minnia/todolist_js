@@ -1,3 +1,8 @@
+const apiUrl = "http://localhost:5000/todolist-js-6c1cc/us-central1/app";
+
+const axiosClient = axios.create({
+  baseURL: apiUrl
+});
 const todoList = document.querySelector("#todolist");
 const todosForm = document.querySelector("#add-todo-list");
 
@@ -42,17 +47,14 @@ const deleteTodo = element => {
 };
 deleteSpans.forEach(deleteTodo);
 
-todosForm.addEventListener("keypress", e => {
+todosForm.addEventListener("keypress", async e => {
   if (e.which === 13) {
     e.preventDefault();
-    db.collection("todos")
-      .add({
-        newTodo: todosForm.todo.value
-      })
-      .then(document => {
-        createTodoElement(document.id, todosForm.todo.value);
-        todosForm.todo.value = "";
-      });
+    const { data: document } = await axiosClient.post("/api/todos", {
+      newTodo: todosForm.todo.value
+    });
+    createTodoElement(document.id, todosForm.todo.value);
+    todosForm.todo.value = "";
   }
 });
 
