@@ -6,11 +6,16 @@
 
 ## What has it been built with?
 
-- Javascript, CSS and HTML
+### Frontend
+Javascript, CSS and HTML
+
+### Backend
+Created using Firebase, real-time database
 
 ## Why?
 
-- I've made a similar todo list using jQuery and wanted to challenge myself with rewriting it using vanilla Javascript
+- For the frontend I've made a similar todo list using jQuery and wanted to challenge myself with rewriting it using vanilla Javascript
+- For the backend I'm implementing Firebase for practice and to learn to use Firebase in projects as opposed to tutorials
 
 ## Clone this repo
 
