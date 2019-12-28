@@ -7,10 +7,12 @@
 ## What has it been built with?
 
 ### Frontend
+
 Javascript, CSS and HTML
 
 ### Backend
-Created using Firebase, real-time database
+
+Created using Firebase, real-time database. A REST Api is being built for this todo list using CRUD practices
 
 ## Why?
 
