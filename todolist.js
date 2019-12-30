@@ -13,7 +13,6 @@ const span = document.getElementsByTagName("span");
 const deleteSpans = [...span];
 
 const inputTag = document.getElementsByTagName("input");
-const input = [...inputTag];
 
 const toggleTodo = element => {
   element.addEventListener("click", () => {
@@ -22,6 +21,7 @@ const toggleTodo = element => {
 };
 liArray.forEach(toggleTodo);
 
+//Function for creating new todo
 const createTodoElement = (id, value) => {
   const li = document.createElement("li");
   const deleteButton = document.createElement("span");
@@ -35,6 +35,7 @@ const createTodoElement = (id, value) => {
   todoList.appendChild(li);
 };
 
+//Function for deleting todo
 const deleteTodo = element => {
   element.addEventListener("click", event => {
     event.stopPropagation();
@@ -47,6 +48,7 @@ const deleteTodo = element => {
 };
 deleteSpans.forEach(deleteTodo);
 
+//POST
 todosForm.addEventListener("keypress", async e => {
   if (e.which === 13) {
     e.preventDefault();
@@ -58,8 +60,8 @@ todosForm.addEventListener("keypress", async e => {
   }
 });
 
-//Firebase
-const getTodos = () => {
+//GET
+const getTodos = async () => {
   return db
     .collection("todos")
     .get()

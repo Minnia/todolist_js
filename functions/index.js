@@ -16,7 +16,7 @@ app.get("/todos", (req, res) => {
   return res.status(200).send();
 });
 
-//CREATE
+//POST
 app.post("/api/todos", (req, res) => {
   (async () => {
     try {
